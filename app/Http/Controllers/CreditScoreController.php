@@ -15,19 +15,19 @@ class CreditScoreController extends Controller
 
     public function predict(Request $request)
     {
-        // Collect all the input data from the form
+        
         $input_data = $request->only([
-            'principal_amount', // Principal loan amount
-            'monthly_interest_rate', // Monthly interest rate
-            'loan_tenure', // Loan tenure in years
-            'monthly_salary', // Monthly salary of the applicant
-            'loan_to_income', // Loan to income ratio
-            'customer_age', // Age of the applicant
-            'has_guarantor', // Whether the applicant has a guarantor (1 = Yes, 0 = No)
-            'num_installments', // Number of loan installments
+            'principal_amount', 
+            'monthly_interest_rate', 
+            'loan_tenure', 
+            'monthly_salary',
+            'loan_to_income',
+            'customer_age',
+            'has_guarantor', 
+            'num_installments',
         ]);
 
-        // Define the column names as per your training data
+       
         $columns = [
             'principal_amount',
             'monthly_interest_rate',
@@ -39,7 +39,7 @@ class CreditScoreController extends Controller
             'num_installments'
         ];
 
-        // Convert the input data to match the structure of the DataFrame expected by the model
+        
         $input_data_values = array_values($input_data);
 
         // Ensure that the number of fields matches the model's input structure
