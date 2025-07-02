@@ -14,8 +14,12 @@ use App\Http\Controllers\CreditScoreController;
 |
 */
 
-Route::get('/', [CreditScoreController::class, 'index']);
+// Default route redirects to form
+Route::get('/', [CreditScoreController::class, 'showForm'])->name('credit.form');
 
+// Handle form submission and send to Flask API
+Route::post('/predict', [CreditScoreController::class, 'predict'])->name('credit.predict');
 
-Route::get('/credit-score', [CreditScoreController::class, 'index']);
-Route::post('/credit-score/predict', [CreditScoreController::class, 'predict']);
+Route::get('/credit-score', [CreditScoreController::class, 'showForm'])->name('credit.form');
+Route::post('/credit-score/predict', [CreditScoreController::class, 'predict'])->name('credit.predict');
+
